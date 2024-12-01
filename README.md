@@ -36,4 +36,13 @@
 
 ---
 
-This project uses the [AOC Kotlin template](https://github.com/pgebert/advent-of-code-kotlin-template) 🚀
+# Miscellaneous
+
+## 🔎 Template
+
+This project used the [advent-of-code-kotlin-template](https://github.com/pgebert/advent-of-code-kotlin-template) which
+is a ready-to-use template for advent of code written in kotlin - just use it and start coding! 🚀
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
