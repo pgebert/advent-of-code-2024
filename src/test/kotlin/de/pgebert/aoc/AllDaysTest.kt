@@ -17,7 +17,7 @@ class AllDaysTest {
     @TestFactory
     fun answers() = listOf(
         Answer(Day01(), 1110981, 24869388),
-        Answer(Day02(), NOT_IMPLEMENTED, NOT_IMPLEMENTED),
+        Answer(Day02(), 432, 488),
         Answer(Day03(), NOT_IMPLEMENTED, NOT_IMPLEMENTED),
         Answer(Day04(), NOT_IMPLEMENTED, NOT_IMPLEMENTED),
         Answer(Day05(), NOT_IMPLEMENTED, NOT_IMPLEMENTED),

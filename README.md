@@ -1,15 +1,15 @@
 # 🎄 [Advent Of Code](https://adventofcode.com)
 
-![Current day](https://img.shields.io/badge/Day-1-blue)
-![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-2-yellow)
-![Days completed](https://img.shields.io/badge/Days%20Completed-1-red)
+![Current day](https://img.shields.io/badge/Day-2-blue)
+![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-4-yellow)
+![Days completed](https://img.shields.io/badge/Days%20Completed-2-red)
 
 ### Daily Solution Index
 
 | Day  | Title              | Part 1 | Part 2 | Code                                                                                                                            |
 |------|--------------------|:------:|:------:|---------------------------------------------------------------------------------------------------------------------------------|
 | ✔ 01 | Historian Hysteria |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day01.kt) |
-| ⚪ 02 | (not released)     |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day02.kt) |
+| ✔ 02 | Red-Nosed Reports  |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day02.kt) |
 | ⚪ 03 | (not released)     |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day03.kt) |
 | ⚪ 04 | (not released)     |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day04.kt) |
 | ⚪ 05 | (not released)     |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day05.kt) |
