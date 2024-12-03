@@ -1,8 +1,8 @@
 # 🎄 [Advent Of Code](https://adventofcode.com)
 
-![Current day](https://img.shields.io/badge/Day-2-blue)
-![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-4-yellow)
-![Days completed](https://img.shields.io/badge/Days%20Completed-2-red)
+![Current day](https://img.shields.io/badge/Day-3-blue)
+![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-6-yellow)
+![Days completed](https://img.shields.io/badge/Days%20Completed-3-red)
 
 ### Daily Solution Index
 
@@ -10,7 +10,7 @@
 |------|--------------------|:------:|:------:|---------------------------------------------------------------------------------------------------------------------------------|
 | ✔ 01 | Historian Hysteria |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day01.kt) |
 | ✔ 02 | Red-Nosed Reports  |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day02.kt) |
-| ⚪ 03 | (not released)     |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day03.kt) |
+| ✔ 03 | Mull It Over       |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day03.kt) |
 | ⚪ 04 | (not released)     |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day04.kt) |
 | ⚪ 05 | (not released)     |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day05.kt) |
 | ⚪ 06 | (not released)     |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day06.kt) |
