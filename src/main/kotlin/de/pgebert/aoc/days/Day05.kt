@@ -1,11 +1,47 @@
 package de.pgebert.aoc.days
 
 import de.pgebert.aoc.Day
-import de.pgebert.aoc.NOT_IMPLEMENTED
 
 class Day05(input: String? = null) : Day(5, "Day5", input) {
 
-    override fun partOne() = NOT_IMPLEMENTED
+    val ruleRegex = "(\\d+)\\|(\\d+)".toRegex()
 
-    override fun partTwo() = NOT_IMPLEMENTED
+    private val rules =
+        inputList.mapNotNull { line ->
+            ruleRegex.find(line)?.destructured?.let { (predecessor, successor) ->
+                predecessor.toInt() to successor.toInt()
+            }
+        }.groupBy({ it.first }, { it.second })
+            .mapValues { (_, successors) -> successors.toSet() }
+
+    private val updates = inputList
+        .filter { it.contains(",") }
+        .map { it.split(",").map(String::toInt) }
+
+
+    private fun List<Int>.isValidUpdate() = rules.all { (predecessor, successors) ->
+        successors.all { successor -> indexOf(successor) == -1 || indexOf(predecessor) < indexOf(successor) }
+    }
+
+    override fun partOne() =
+        updates.filter { it.isValidUpdate() }.sumOf { it[it.size / 2] }
+
+    override fun partTwo() =
+        updates.filterNot { it.isValidUpdate() }.map { update ->
+            val correctedUpdate = mutableListOf<Int>()
+            outer@ for (i in update.indices) {
+                val successors = rules[update[i]] ?: emptyList()
+
+                for (j in correctedUpdate.indices) {
+                    if (correctedUpdate[j] in successors) {
+                        correctedUpdate.add(j, update[i])
+                        continue@outer
+                    }
+                }
+
+                correctedUpdate.add(update[i])
+            }
+            correctedUpdate
+
+        }.sumOf { it[it.size / 2] }
 }
