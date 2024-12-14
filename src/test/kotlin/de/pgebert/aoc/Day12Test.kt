@@ -8,9 +8,6 @@ import org.junit.jupiter.api.Test
 class Day12Test {
 
     private val example = """
-        RRRRIICCFF
-        RRRRIICCCF
-        VVRRRCCFFF
         AAAA
         BBCD
         BBCC
@@ -39,6 +36,6 @@ class Day12Test {
     @Test
     fun `testing day 02 partTwo`() {
         val day = Day12()
-        day.partTwo() shouldBe 237994815702032
+        day.partTwo() shouldBe 849332
     }
 }

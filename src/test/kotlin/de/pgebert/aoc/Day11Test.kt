@@ -5,7 +5,7 @@ import de.pgebert.aoc.utils.shouldBe
 import org.junit.jupiter.api.Test
 
 
-class Day011Test {
+class Day11Test {
 
     private val example = "125 17"
 
