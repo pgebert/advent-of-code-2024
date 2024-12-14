@@ -1,8 +1,8 @@
 # 🎄 [Advent Of Code](https://adventofcode.com)
 
-![Current day](https://img.shields.io/badge/Day-13-blue)
-![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-25-yellow)
-![Days completed](https://img.shields.io/badge/Days%20Completed-12-red)
+![Current day](https://img.shields.io/badge/Day-14-blue)
+![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-27-yellow)
+![Days completed](https://img.shields.io/badge/Days%20Completed-13-red)
 
 ### Daily Solution Index
 
@@ -21,7 +21,7 @@
 | ✔ 11  | Plutonian Pebbles     |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day11.kt) |
 | ⚪ 12  | Garden Groups         |   ⭐    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day12.kt) |
 | ✔ 13  | Claw Contraption      |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day13.kt) |
-| ⚪ 14  | (not released)        |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day14.kt) |
+| ✔ 14  | Restroom Redoubt      |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day14.kt) |
 | ⚪ 15  | (not released)        |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day15.kt) |
 | ⚪ 16  | (not released)        |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day16.kt) |
 | ⚪ 17  | (not released)        |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day17.kt) |
