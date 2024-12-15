@@ -1,14 +1,15 @@
 package de.pgebert.aoc.days
 
 import de.pgebert.aoc.Day
-import de.pgebert.aoc.NOT_IMPLEMENTED
+import kotlin.math.max
+import kotlin.math.min
 
 
-open class Point(var x: Int, var y: Int)
+open class Point(var x: ClosedRange<Int>, var y: ClosedRange<Int>)
 
-class Robot(x: Int, y: Int) : Point(x, y)
-class Package(x: Int, y: Int) : Point(x, y)
-class Wall(x: Int, y: Int) : Point(x, y)
+class Robot(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
+class Package(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
+class Wall(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
 
 class Day15(input: String? = null) : Day(15, "Day15", input) {
 
@@ -18,92 +19,86 @@ class Day15(input: String? = null) : Day(15, "Day15", input) {
         val commands = inputList.filter { !it.startsWith("#") && it.isNotBlank() }.joinToString("")
 
         val board = buildList {
-
             for (i in field.indices) {
                 for (j in field[i].indices) {
                     when (field[i][j]) {
-                        '@' -> add(Robot(i, j))
-                        'O' -> add(Package(i, j))
-                        '#' -> add(Wall(i, j))
+                        '@' -> add(Robot(i..i, j..j))
+                        'O' -> add(Package(i..i, j..j))
+                        '#' -> add(Wall(i..i, j..j))
                     }
                 }
             }
         }
 
-        // print initial
-//        println("Initial state:")
-//        printBoard(field, board)
-
         commands.forEach { command ->
-
             val direction = directionByCommand[command]!!
             val robot = board.first { it is Robot }
 
             move(robot, direction, board)
-
-
-            // print field
-//            println("Move: $command")
-//            printBoard(field, board)
         }
 
-        return board.filter { it is Package }.sumOf { it.x * 100 + it.y }
+        return board.filter { it is Package }.sumOf { it.x.start * 100 + it.y.start }
     }
 
-    private fun printBoard(
-        field: List<String>,
-        board: List<Point>
-    ) {
-        for (i in field.indices) {
-            for (j in field[i].indices) {
+    override fun partTwo(): Int {
 
-                val pos = board.firstOrNull { it.x == i && it.y == j }
-                when (pos) {
-                    is Robot -> print("@")
-                    is Wall -> print("#")
-                    is Package -> print("O")
-                    else -> print(".")
+        val field = inputList.filter { it.startsWith("#") }
+        val commands = inputList.filter { !it.startsWith("#") && it.isNotBlank() }.joinToString("")
+
+        val board = buildList {
+            for (i in field.indices) {
+                for (j in field[i].indices) {
+                    when (field[i][j]) {
+                        '@' -> add(Robot(i..i, j * 2..j * 2))
+                        'O' -> add(Package(i..i, j * 2..j * 2 + 1))
+                        '#' -> add(Wall(i..i, j * 2..j * 2 + 1))
+                    }
                 }
             }
-            print("\n")
         }
-        print("\n")
+
+        commands.forEach { command ->
+            val direction = directionByCommand[command]!!
+            val robot = board.first { it is Robot }
+
+            move(robot, direction, board)
+        }
+
+        return board.filter { it is Package }.sumOf { it.x.start * 100 + it.y.start }
     }
+
+    private fun List<Point>.evolveInDirection(dir: Pair<Int, Int>, board: List<Point>): Set<Point> = flatMap { pos ->
+        val newPos = Point(pos.x.plus(dir.first), pos.y.plus(dir.second))
+        val existing = board.filter { it.x.containedIn(newPos.x) > 0 && it.y.containedIn(newPos.y) > 0 }
+        setOf(pos) + existing.evolveInDirection(dir, board - existing)
+    }.toSet()
 
     private fun move(
         pos: Point,
-        dir: Point,
+        dir: Pair<Int, Int>,
         board: List<Point>
     ): Boolean {
-        var newPos = board.firstOrNull { it.x == pos.x + dir.x && it.y == pos.y + dir.y }
-        when (newPos) {
-            is Wall -> return false
-            is Package -> {
-                val success = move(newPos, dir, board)
-                if (success) {
-                    pos.x = pos.x + dir.x
-                    pos.y = pos.y + dir.y
-                }
-                return success
+        val existing = listOf(pos).evolveInDirection(dir, board)
+        if (existing.none { it is Wall }) {
+            existing.forEach { point ->
+                point.x = point.x.plus(dir.first)
+                point.y = point.y.plus(dir.second)
             }
-
-            else -> {
-                pos.x = pos.x + dir.x
-                pos.y = pos.y + dir.y
-                return true
-            }
-
+            return true
         }
-
         return false
     }
 
     val directionByCommand = mapOf(
-        '^' to Point(-1, 0),  // up
-        '>' to Point(0, 1),   // right
-        'v' to Point(1, 0),   // down
-        '<' to Point(0, -1)   // left
+        '^' to Pair(-1, 0),  // up
+        '>' to Pair(0, 1),   // right
+        'v' to Pair(1, 0),   // down
+        '<' to Pair(0, -1)   // left
     )
 
-    override fun partTwo() = NOT_IMPLEMENTED
+    fun ClosedRange<Int>.plus(i: Int) = start + i..endInclusive + i
+
+    fun ClosedRange<Int>.containedIn(other: ClosedRange<Int>) =
+        (min(endInclusive, other.endInclusive) - max(start, other.start)).plus(1)
+            .coerceAtLeast(0)
 }
