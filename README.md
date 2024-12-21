@@ -1,8 +1,8 @@
 # 🎄 [Advent Of Code](https://adventofcode.com)
 
-![Current day](https://img.shields.io/badge/Day-18-blue)
-![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-35-yellow)
-![Days completed](https://img.shields.io/badge/Days%20Completed-17-red)
+![Current day](https://img.shields.io/badge/Day-21-blue)
+![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-37-yellow)
+![Days completed](https://img.shields.io/badge/Days%20Completed-18-red)
 
 ### Daily Solution Index
 
@@ -26,7 +26,7 @@
 | ✔ 16  | Reindeer Maze          |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day16.kt) |
 | ⚪ 17  | Chronospatial Computer |   ⭐    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day17.kt) |
 | ✔ 18  | RAM Run                |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day18.kt) |
-| ⚪ 19  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day19.kt) |
+| ✔ 19  | Linen Layout           |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day19.kt) |
 | ⚪ 20  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day20.kt) |
 | ⚪ 21  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day21.kt) |
 | ⚪ 22  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day22.kt) |
