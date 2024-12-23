@@ -1,8 +1,8 @@
 # 🎄 [Advent Of Code](https://adventofcode.com)
 
-![Current day](https://img.shields.io/badge/Day-22-blue)
-![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-39-yellow)
-![Days completed](https://img.shields.io/badge/Days%20Completed-19-red)
+![Current day](https://img.shields.io/badge/Day-23-blue)
+![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-41-yellow)
+![Days completed](https://img.shields.io/badge/Days%20Completed-20-red)
 
 ### Daily Solution Index
 
@@ -29,7 +29,7 @@
 | ✔ 19  | Linen Layout           |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day19.kt) |
 | ✔ 20  | Race Condition         |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day20.kt) |
 | ⚪ 21  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day21.kt) |
-| ⚪ 22  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day22.kt) |
+| ✔  22 | Monkey Market          |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day22.kt) |
 | ⚪ 23  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day23.kt) |
 | ⚪ 24  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day24.kt) |
 | ⚪ 25  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day25.kt) |
