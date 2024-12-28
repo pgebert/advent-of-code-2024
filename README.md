@@ -1,7 +1,7 @@
 # 🎄 [Advent Of Code](https://adventofcode.com)
 
-![Current day](https://img.shields.io/badge/Day-23-blue)
-![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-43-yellow)
+![Current day](https://img.shields.io/badge/Day-25-blue)
+![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-45-yellow)
 ![Days completed](https://img.shields.io/badge/Days%20Completed-21-red)
 
 ### Daily Solution Index
@@ -28,11 +28,11 @@
 | ✔ 18  | RAM Run                |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day18.kt) |
 | ✔ 19  | Linen Layout           |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day19.kt) |
 | ✔ 20  | Race Condition         |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day20.kt) |
-| ⚪ 21  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day21.kt) |
+| ⚪ 21  | Keypad Conundrum       |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day21.kt) |
 | ✔  22 | Monkey Market          |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day22.kt) |
 | ✔ 23  | LAN Party              |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day23.kt) |
-| ⚪ 24  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day24.kt) |
-| ⚪ 25  | (not released)         |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day25.kt) |
+| ⚪ 24  | Crossed Wires          |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day24.kt) |
+| ⚪ 25  | Code Chronicle         |   ⭐    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day25.kt) |
 
 ---
 

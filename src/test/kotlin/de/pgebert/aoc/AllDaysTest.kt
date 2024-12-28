@@ -40,7 +40,7 @@ class AllDaysTest {
         Answer(Day22(), 18261820068, 2044),
         Answer(Day23(), 1248, "aa,cf,cj,cv,dr,gj,iu,jh,oy,qr,xr,xy,zb"),
         Answer(Day24(), NOT_IMPLEMENTED, NOT_IMPLEMENTED),
-        Answer(Day25(), NOT_IMPLEMENTED, NOT_IMPLEMENTED),
+        Answer(Day25(), 3356, NOT_IMPLEMENTED),
     ).map { (day, expectedPartOne, expectedPartTwo) ->
 
         DynamicTest.dynamicTest("Day ${day.number} - ${day.title}") {
