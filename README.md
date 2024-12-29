@@ -1,8 +1,8 @@
 # 🎄 [Advent Of Code](https://adventofcode.com)
 
 ![Current day](https://img.shields.io/badge/Day-25-blue)
-![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-45-yellow)
-![Days completed](https://img.shields.io/badge/Days%20Completed-21-red)
+![Stars obtained](https://img.shields.io/badge/Stars%20Obtained%20⭐-50-yellow)
+![Days completed](https://img.shields.io/badge/Days%20Completed-25-red)
 
 ### Daily Solution Index
 
@@ -24,19 +24,23 @@
 | ✔ 14  | Restroom Redoubt       |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day14.kt) |
 | ✔ 15  | Warehouse Woes         |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day15.kt) |
 | ✔ 16  | Reindeer Maze          |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day16.kt) |
-| ⚪ 17  | Chronospatial Computer |   ⭐    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day17.kt) |
+| ✔ 17  | Chronospatial Computer |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day17.kt) |
 | ✔ 18  | RAM Run                |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day18.kt) |
 | ✔ 19  | Linen Layout           |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day19.kt) |
 | ✔ 20  | Race Condition         |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day20.kt) |
-| ⚪ 21  | Keypad Conundrum       |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day21.kt) |
-| ✔  22 | Monkey Market          |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day22.kt) |
+| ✔ 21  | Keypad Conundrum       |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day21.kt) |
+| ✔ 22  | Monkey Market          |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day22.kt) |
 | ✔ 23  | LAN Party              |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day23.kt) |
-| ⚪ 24  | Crossed Wires          |   ⚪    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day24.kt) |
-| ⚪ 25  | Code Chronicle         |   ⭐    |   ⚪    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day25.kt) |
+| ✔ 24  | Crossed Wires          |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day24.kt) |
+| ✔ 25  | Code Chronicle         |   ⭐    |   ⭐    | [![Code](https://img.shields.io/badge/Code-grey?style=for-the-badge&logo=Kotlin)](src/main/kotlin/de/pgebert/aoc/days/Day25.kt) |
 
 ---
 
 # Miscellaneous
+
+## 🏷 Test
+
+The puzzle inputs have been removed in compliance with AOC's request to not publish them.
 
 ## 🔎 Template
 
