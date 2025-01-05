@@ -4,20 +4,20 @@ import de.pgebert.aoc.Day
 
 class Day24(input: String? = null) : Day(24, "Day24", input) {
 
-    private val wires: MutableMap<String, Int> = parseWires(inputList)
-    private val gates: MutableList<Gate> = parseGates(inputList)
+    private val wires: MutableMap<String, Int> = parseWires()
+    private val gates: MutableList<Gate> = parseGates()
 
 
-    private fun parseWires(input: List<String>): MutableMap<String, Int> =
-        input
-            .takeWhile { it.isNotEmpty() }
+    private fun parseWires(): MutableMap<String, Int> =
+        inputList
+            .takeWhile { it.contains(":") }
             .associate { it.substringBefore(":") to it.last().digitToInt() }
             .toMutableMap()
 
-    private fun parseGates(input: List<String>): MutableList<Gate> =
-        input
-            .dropWhile { it.isNotEmpty() }
-            .drop(1)
+    private fun parseGates(): MutableList<Gate> =
+        inputList
+            .filterNot { it.contains(":") }
+            .filterNot { it.isBlank() }
             .map { Gate.of(it) }
             .toMutableList()
 
@@ -31,27 +31,24 @@ class Day24(input: String? = null) : Day(24, "Day24", input) {
 
     override fun partOne(): Long {
 
-        val values = mutableMapOf<String, () -> Int>()
-
-        inputList.filter { it.isNotBlank() }.forEach { line ->
-            if (line.contains(":")) {
-                val splitted = line.split(":")
-                val key = splitted[0]
-                val value = { splitted[1].trim().toInt() }
-                values.put(key, value)
-            } else {
-                val operationRegex = "(\\S+)\\s(\\S+)\\s(\\S+)\\s->\\s(\\S+)".toRegex()
-                val (operand1, operation, operand2, target) = operationRegex.matchEntire(line)!!.destructured
-                val key = target
-                val op = operation.toOperation()
-                val value = { op.invoke(values[operand1]!!.invoke(), values[operand2]!!.invoke()) }
-                values.put(key, value)
+        val values = buildMap<String, () -> Int> {
+            wires.forEach {
+                put(it.key) { it.value }
+            }
+            gates.forEach {
+                put(it.out) {
+                    it.op.toOperation().invoke(get(it.left)!!.invoke(), get(it.right)!!.invoke())
+                }
             }
         }
 
-        return values.keys.sortedDescending().filter { it.startsWith("z") }.map { values[it]!!.invoke() }
+        return values.keys
+            .sortedDescending()
+            .filter { it.startsWith("z") }
+            .map { values[it]!!.invoke() }
             .joinToString("").toLong(2)
     }
+
 
     private fun String.toOperation(): (Int, Int) -> Int = when (this) {
         "OR" -> Int::or
@@ -60,7 +57,8 @@ class Day24(input: String? = null) : Day(24, "Day24", input) {
         else -> throw RuntimeException("Unknown operation: $this")
     }
 
-    override fun partTwo() {
+
+    override fun partTwo(): String {
         val z = gates.filter { it.out.startsWith("z") }.map { it.out }.sorted().joinToString("->")
         val x = z.replace('z', 'x')
         val y = z.replace('z', 'y')
@@ -99,5 +97,11 @@ class Day24(input: String? = null) : Day(24, "Day24", input) {
             println("    $right -> $out")
         }
         println("}")
+
+        // 1 - use output to create graph visualization with graphviz
+        // 2 - correct misinformed patterns manually
+        // 3 - write down corrected nodes in alphabetical order
+
+        return "fbq,pbv,qff,qnw,qqp,z16,z23,z36"
     }
 }

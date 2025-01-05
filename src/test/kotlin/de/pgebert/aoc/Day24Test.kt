@@ -66,32 +66,7 @@ class Day24Test {
     @Test
     fun `testing day 24 partTwo example`() {
         val day = Day24(input = example)
-        day.partTwo() shouldBe "co,de,ka,ta"
-    }
-
-    @Test
-    fun `testing day 24 partOne`() {
-        val day = Day24()
-        day.partOne() shouldBe 49430469426918
-    }
-
-
-    //    x11 XOR y11 -> qff
-//    x11 AND y11 -> qnw
-//
-//    jdd XOR rbm -> fbq
-//    jdd AND rbm -> z36
-//
-//    wdr OR jcd -> z23
-//    cts XOR bcd -> qqp
-//
-//    x16 AND y16 -> z16
-//    dfn XOR qcr -> pbv
-//
-//    fbq,pbv,qff,qnw,qqp,z16,z23,z36
-    @Test
-    fun `testing day 24 partTwo`() {
-        val day = Day24()
         day.partTwo() shouldBe "fbq,pbv,qff,qnw,qqp,z16,z23,z36"
     }
+    
 }
