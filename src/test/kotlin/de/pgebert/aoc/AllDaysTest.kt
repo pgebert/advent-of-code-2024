@@ -32,14 +32,14 @@ class AllDaysTest {
         Answer(Day14(), 229839456, 7138),
         Answer(Day15(), 1465523, 1471049),
         Answer(Day16(), 111480, 529),
-        Answer(Day17(), "1,3,7,4,6,4,2,3,5", NOT_IMPLEMENTED),
+        Answer(Day17(), "1,3,7,4,6,4,2,3,5", 202367025818154),
         Answer(Day18(), 302, "24,32"),
         Answer(Day19(), 290, 712058625427487),
         Answer(Day20(), 1521, 1013106),
-        Answer(Day21(), NOT_IMPLEMENTED, NOT_IMPLEMENTED),
+        Answer(Day21(), 202648, 248919739734728),
         Answer(Day22(), 18261820068, 2044),
         Answer(Day23(), 1248, "aa,cf,cj,cv,dr,gj,iu,jh,oy,qr,xr,xy,zb"),
-        Answer(Day24(), NOT_IMPLEMENTED, NOT_IMPLEMENTED),
+        Answer(Day24(), 49430469426918, "fbq,pbv,qff,qnw,qqp,z16,z23,z36"),
         Answer(Day25(), 3356, NOT_IMPLEMENTED),
     ).map { (day, expectedPartOne, expectedPartTwo) ->
 
