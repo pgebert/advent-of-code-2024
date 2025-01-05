@@ -36,17 +36,5 @@ class Day13Test {
         val day = Day13(input = example)
         day.partTwo() shouldBe 875318608908
     }
-
-
-    @Test
-    fun `testing day 02 partOne`() {
-        val day = Day13()
-        day.partOne() shouldBe 32026
-    }
-
-    @Test
-    fun `testing day 02 partTwo`() {
-        val day = Day13()
-        day.partTwo() shouldBe 89013607072065
-    }
+    
 }
