@@ -33,4 +33,5 @@ class Day08Test {
         val day = Day08(input = example)
         day.partTwo() shouldBe 34
     }
+    
 }
