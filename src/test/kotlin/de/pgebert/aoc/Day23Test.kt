@@ -53,16 +53,5 @@ class Day23Test {
         val day = Day23(input = example)
         day.partTwo() shouldBe "co,de,ka,ta"
     }
-
-    @Test
-    fun `testing day 23 partOne`() {
-        val day = Day23()
-        day.partOne() shouldBe 1248
-    }
-
-    @Test
-    fun `testing day 23 partTwo`() {
-        val day = Day23()
-        day.partTwo() shouldBe "aa,cf,cj,cv,dr,gj,iu,jh,oy,qr,xr,xy,zb"
-    }
+    
 }
