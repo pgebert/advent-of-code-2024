@@ -5,13 +5,13 @@ import kotlin.math.max
 import kotlin.math.min
 
 
-open class Point(var x: ClosedRange<Int>, var y: ClosedRange<Int>)
-
-class Robot(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
-class Package(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
-class Wall(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
-
 class Day15(input: String? = null) : Day(15, "Day15", input) {
+
+    open class Point(var x: ClosedRange<Int>, var y: ClosedRange<Int>)
+
+    class Robot(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
+    class Package(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
+    class Wall(x: ClosedRange<Int>, y: ClosedRange<Int>) : Point(x, y)
 
     override fun partOne(): Int {
 
