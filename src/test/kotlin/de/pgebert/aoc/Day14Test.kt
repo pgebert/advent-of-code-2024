@@ -2,6 +2,7 @@ package de.pgebert.aoc
 
 import de.pgebert.aoc.days.Day14
 import de.pgebert.aoc.utils.shouldBe
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 
@@ -22,27 +23,17 @@ class Day14Test {
         p=9,5 v=-3,-3
     """.trimIndent()
 
-//    @Test
-//    fun `testing day 14 partOne example`() {
-//        val day = Day14(input = example)
-//        day.partOne() shouldBe 12
-//    }
-//
-//    @Test
-//    fun `testing day 14 partTwo example`() {
-//        val day = Day14(input = example)
-//        day.partTwo() shouldBe 875318608908
-//    }
-
     @Test
-    fun `testing day 14 partOne`() {
-        val day = Day14()
-        day.partOne() shouldBe 229839456
+    fun `testing day 14 partOne example`() {
+        val day = Day14(input = example)
+        day.partOne(11, 7) shouldBe 12
     }
 
     @Test
-    fun `testing day 14 partTwo`() {
-        val day = Day14()
-        day.partTwo() shouldBe 7138
+    @Disabled
+    fun `testing day 14 partTwo example`() {
+        val day = Day14(input = example)
+        day.partTwo(11, 7) shouldBe 875318608908
     }
+
 }

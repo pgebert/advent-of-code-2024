@@ -4,24 +4,19 @@ import de.pgebert.aoc.Day
 
 class Day14(input: String? = null) : Day(14, "Day14", input) {
 
-    override fun partOne(): Int {
 
-        // change this for test input
-        // val BOARD_WIDTH = 11
-        // val BOARD_HEIGHT = 7
+    override fun partOne() = partOne(boardWidth = 101, boardHeight = 103)
 
-        val BOARD_WIDTH = 101
-        val BOARD_HEIGHT = 103
+    fun partOne(boardWidth: Int, boardHeight: Int): Int {
 
-        val ROUNDS = 100
+        val rounds = 100
 
         val robots = getRobots()
-        repeat(ROUNDS) {
+        repeat(rounds) {
             robots.forEach { robot ->
-                robot.position = robot.position.plus(robot.velocity).modulo(BOARD_HEIGHT to BOARD_WIDTH)
+                robot.position = robot.position.plus(robot.velocity).modulo(boardHeight to boardWidth)
             }
         }
-
 
         val countsByQuarter = mutableMapOf<Int, Int>(
             0 to 0,
@@ -32,19 +27,19 @@ class Day14(input: String? = null) : Day(14, "Day14", input) {
 
         robots.forEach { robot ->
             when {
-                robot.position.first < BOARD_HEIGHT / 2 && robot.position.second < BOARD_WIDTH / 2 -> {
+                robot.position.first < boardHeight / 2 && robot.position.second < boardWidth / 2 -> {
                     countsByQuarter[0] = countsByQuarter[0]!! + 1
                 }
 
-                robot.position.first < BOARD_HEIGHT / 2 && robot.position.second > BOARD_WIDTH / 2 -> {
+                robot.position.first < boardHeight / 2 && robot.position.second > boardWidth / 2 -> {
                     countsByQuarter[1] = countsByQuarter[1]!! + 1
                 }
 
-                robot.position.first > BOARD_HEIGHT / 2 && robot.position.second < BOARD_WIDTH / 2 -> {
+                robot.position.first > boardHeight / 2 && robot.position.second < boardWidth / 2 -> {
                     countsByQuarter[2] = countsByQuarter[2]!! + 1
                 }
 
-                robot.position.first > BOARD_HEIGHT / 2 && robot.position.second > BOARD_WIDTH / 2 -> {
+                robot.position.first > boardHeight / 2 && robot.position.second > boardWidth / 2 -> {
                     countsByQuarter[3] = countsByQuarter[3]!! + 1
                 }
             }
@@ -53,17 +48,11 @@ class Day14(input: String? = null) : Day(14, "Day14", input) {
         return countsByQuarter.values.reduce { acc, i -> acc * i }
     }
 
+    override fun partTwo() = partTwo(boardWidth = 101, boardHeight = 103)
 
-    override fun partTwo(): Int {
+    fun partTwo(boardWidth: Int, boardHeight: Int): Int {
 
-        // change this for test input
-        // val BOARD_WIDTH = 11
-        // val BOARD_HEIGHT = 7
-
-        val BOARD_WIDTH = 101
-        val BOARD_HEIGHT = 103
-
-        val REGION_THRESHOLD = 229
+        val regionThreshold = 229
 
         val robots = getRobots()
         var round = 0
@@ -72,12 +61,12 @@ class Day14(input: String? = null) : Day(14, "Day14", input) {
             round++
 
             robots.forEach { robot ->
-                robot.position = robot.position.plus(robot.velocity).modulo(BOARD_HEIGHT to BOARD_WIDTH)
+                robot.position = robot.position.plus(robot.velocity).modulo(boardHeight to boardWidth)
             }
 
             val maxRegionSize = getMaxRegionSize(robots.map { it.position }.toSet())
 
-            if (maxRegionSize >= REGION_THRESHOLD) {
+            if (maxRegionSize >= regionThreshold) {
                 return round
             }
         }
