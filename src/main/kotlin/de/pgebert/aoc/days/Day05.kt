@@ -19,10 +19,6 @@ class Day05(input: String? = null) : Day(5, "Day5", input) {
         .map { it.split(",").map(String::toInt) }
 
 
-    private fun List<Int>.isValidUpdate() = rules.all { (predecessor, successors) ->
-        successors.all { successor -> indexOf(successor) == -1 || indexOf(predecessor) < indexOf(successor) }
-    }
-
     override fun partOne() =
         updates.filter { it.isValidUpdate() }.sumOf { it[it.size / 2] }
 
@@ -44,4 +40,8 @@ class Day05(input: String? = null) : Day(5, "Day5", input) {
             correctedUpdate
 
         }.sumOf { it[it.size / 2] }
+
+    private fun List<Int>.isValidUpdate() = rules.all { (predecessor, successors) ->
+        successors.all { successor -> indexOf(successor) == -1 || indexOf(predecessor) < indexOf(successor) }
+    }
 }
