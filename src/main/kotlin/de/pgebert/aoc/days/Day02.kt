@@ -13,28 +13,30 @@ class Day02(input: String? = null) : Day(2, "Day2", input) {
 
 
     override fun partTwo() = parseInput()
-        .map { report ->
-            report.indices.map { index ->
-                report.filterIndexed { i, _ -> i != index }
-            }
-        }
-        .map { report ->
-            report.filter { it.isSortedOrSortedDescending() }
-        }
-        .filter { report ->
-            report.any { it.hasConsecutiveDifferencesWithinRange(1..3) }
-        }
+        .map { report -> generateFilteredReports(report) }
+        .map { filteredReports -> filterSortedReports(filteredReports) }
+        .filter { sortedReports -> hasValidConsecutiveDifferences(sortedReports) }
         .size
+
+
+    private fun generateFilteredReports(report: List<Int>) =
+        report.indices.map { index -> report.filterIndexed { i, _ -> i != index } }
+
+    private fun filterSortedReports(reports: List<List<Int>>) =
+        reports.filter { it.isSortedOrSortedDescending() }
+
+    private fun hasValidConsecutiveDifferences(reports: List<List<Int>>) =
+        reports.any { it.hasConsecutiveDifferencesWithinRange(1..3) }
 
     private fun parseInput() = inputList.map {
         it.split(" ").filterNot { it.isBlank() }.map { it.toInt() }
     }
 
-    private fun List<Int>.isSortedOrSortedDescending(): Boolean {
-        return this == this.sorted() || this == this.sortedDescending()
-    }
+    private fun List<Int>.isSortedOrSortedDescending() =
+        this == sorted() || this == sortedDescending()
 
-    private fun List<Int>.hasConsecutiveDifferencesWithinRange(range: IntRange): Boolean {
-        return this.zipWithNext().all { (first, second) -> abs(first - second) in range }
-    }
+
+    private fun List<Int>.hasConsecutiveDifferencesWithinRange(range: IntRange) =
+        zipWithNext().all { (first, second) -> abs(first - second) in range }
+
 }
