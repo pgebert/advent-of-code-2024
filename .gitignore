@@ -2,3 +2,4 @@
 /.gradle/
 /build/
 /src/main/resources/*
+src/test/kotlin/de/pgebert/aoc/AllDaysTest.kt
