@@ -5,7 +5,7 @@ import de.pgebert.aoc.Day
 class Day11(input: String? = null) : Day(11, "Day11", input) {
 
     override fun partOne() = processStones(25)
-    
+
     override fun partTwo() = processStones(75)
 
     fun processStones(times: Int): Long {
