@@ -31,13 +31,6 @@ class Day21(input: String? = null) : Day(21, "Day21", input) {
         }
     }
 
-//    private val directions = mapOf(
-//        Pair(0, 1) to '>',  // Right
-//        Pair(1, 0) to 'v',  // Down
-//        Pair(0, -1) to '<', // Left
-//        Pair(-1, 0) to '^'  // Up
-//    )
-
     private fun findCost(
         code: String,
         depth: Int,
@@ -78,8 +71,6 @@ class Day21(input: String? = null) : Day(21, "Day21", input) {
                 }
             }
         }
-
-//        println("Depth $depth: $result")
 
         return result
     }
@@ -129,60 +120,6 @@ class Day21(input: String? = null) : Day(21, "Day21", input) {
 
         return lowestCostPaths
     }
-
-//    private fun Map<Pair<Int, Int>, Char>.lowestCostPaths(
-//        start: Pair<Int, Int>,
-//        end: Pair<Int, Int>
-//    ): List<String> {
-//        val queue = PriorityQueue<Pair<List<Pair<Int, Int>>, Int>>(compareBy { it.second })
-//            .apply { add(listOf(start) to 0) }
-//        val seen = mutableMapOf<Pair<Int, Int>, Int>()
-//        var costAtGoal: Int? = null
-//        val allPaths: MutableList<String> = mutableListOf()
-//
-//        while (queue.isNotEmpty()) {
-//            val (path, cost) = queue.poll()
-//            val location = path.last()
-//
-//            if (costAtGoal != null && cost > costAtGoal) {
-//                return allPaths
-//            } else if (path.last() == end) {
-//                costAtGoal = cost
-//                allPaths.add(path.zipWithNext().map { (from, to) -> from.diffToChar(to) }.joinToString("") + "A")
-//            } else if (seen.getOrDefault(location, Int.MAX_VALUE) >= cost) {
-//                seen[location] = cost
-//                location
-//                    .getNeighbors()
-//                    .filter { it in keys }
-//                    .forEach { queue.add(path + it to cost + 1) }
-//            }
-//        }
-//        return allPaths
-//    }
-
-
-    fun Pair<Int, Int>.getNeighbors() = buildList {
-
-        val directions = listOf(
-            -1 to 0,  // up
-            0 to 1,   // right
-            1 to 0,   // down
-            0 to -1   // left
-        )
-
-        directions.forEach { dir ->
-            add(first + dir.first to second + dir.second)
-        }
-    }
-
-    private fun Pair<Int, Int>.diffToChar(other: Pair<Int, Int>): Char =
-        when {
-            second > other.second -> '^'
-            first < other.first -> '>'
-            second < other.second -> 'v'
-            first > other.first -> '<'
-            else -> throw IllegalArgumentException("Invalid direction from $this to $other")
-        }
 
 
     override fun partOne(): Long = inputList.sumOf { findCost(it, 2) * it.dropLast(1).toLong() }
