@@ -4,98 +4,11 @@ import de.pgebert.aoc.Day
 
 class Day17(input: String? = null) : Day(17, "Day17", input) {
 
-//    override fun partOne(): String {
-//
-//        val register = mutableMapOf(
-//            'A' to 0L,
-//            'B' to 0L,
-//            'C' to 0L,
-//        )
-//
-//        val program = mutableListOf<Long>()
-//
-//        inputList.forEach { line ->
-//            when {
-//                line.startsWith("Register A:") -> register['A'] = line.removePrefix("Register A:").trim().toLong()
-//                line.startsWith("Register B:") -> register['B'] = line.removePrefix("Register B:").trim().toLong()
-//                line.startsWith("Register C:") -> register['C'] = line.removePrefix("Register C:").trim().toLong()
-//                line.startsWith("Program:") -> program.addAll(
-//                    line.removePrefix("Program:").trim().split(",").map { it.toLong() })
-//            }
-//        }
-//
-//        fun Long.toLiteral() = when (this) {
-//            0L, 1L, 2L, 3L -> this
-//            4L -> register['A']!!
-//            5L -> register['B']!!
-//            6L -> register['C']!!
-//            else -> {
-//                throw IllegalArgumentException("Invalid combo value: $this")
-//            }
-//        }
-//
-//        var pointer = 0
-//        var out = mutableListOf<Long>()
-//
-//        fun getOperationByOpcode(opcode: Long): (Long) -> Unit = when (opcode) {
-//            // adv
-//            0L -> { operand: Long ->
-//                register['A'] = register['A']!! / 2L.pow(operand.toLiteral())
-//                pointer = pointer + 2
-//            }
-//            // blx
-//            1L -> { operand: Long ->
-//                register['B'] = register['B']!!.xor(operand)
-//                pointer = pointer + 2
-//            }
-//            // bst
-//            2L -> { operand: Long ->
-//                register['B'] = operand.toLiteral() % 8
-//                pointer = pointer + 2
-//            }
-//            // jnz
-//            3L -> { operand: Long ->
-//                pointer = if (register['A']!! == 0L) pointer else operand.toInt()
-//                if (register['A']!! == 0L && program[pointer] == 3L) pointer = Int.MAX_VALUE
-//            }
-//            // bxc
-//            4L -> { operand: Long ->
-//                register['B'] = register['B']!!.xor(register['C']!!)
-//                pointer = pointer + 2
-//            }
-//            // out
-//            5L -> { operand: Long ->
-//                out.add(operand.toLiteral() % 8)
-//                pointer = pointer + 2
-//            }
-//            // bdv
-//            6L -> { operand: Long ->
-//                register['B'] = register['A']!! / 2L.pow(operand.toLiteral())
-//                pointer = pointer + 2
-//            }
-//            // cdv
-//            7L -> { operand: Long ->
-//                register['C'] = register['A']!! / 2L.pow(operand.toLiteral())
-//                pointer = pointer + 2
-//            }
-//
-//            else -> { _: Long -> throw IllegalArgumentException("Invalid operation: $this") }
-//        }
-//
-//
-//
-//        while (pointer < program.size - 1) {
-//            val operation = getOperationByOpcode(program[pointer])
-//            operation(program[pointer + 1])
-//        }
-//
-//
-//
-//        return out.joinToString(",")
-//    }
-//
-//    private fun Long.pow(exponent: Long) = toDouble().pow(exponent.toDouble()).toInt()
-
+    private val registerA = inputList.elementAt(0).removePrefix("Register A:").trim().toLong()
+    private val registerB = inputList.elementAt(1).removePrefix("Register B:").trim().toLong()
+    private val registerC = inputList.elementAt(2).removePrefix("Register C:").trim().toLong()
+    private val program = inputList.filterNot { it.isBlank() }.elementAt(3).removePrefix("Program:").trim().split(",")
+        .map { it.toInt() }
 
     data class Computer(
         var registerA: Long,
@@ -174,23 +87,13 @@ class Day17(input: String? = null) : Day(17, "Day17", input) {
     }
 
 
-    override fun partOne(): String {
-
-        val registerA = inputList.elementAt(0).removePrefix("Register A:").trim().toLong()
-        val registerB = inputList.elementAt(1).removePrefix("Register B:").trim().toLong()
-        val registerC = inputList.elementAt(2).removePrefix("Register C:").trim().toLong()
-        val program = inputList.elementAt(4).removePrefix("Program:").trim().split(",").map { it.toInt() }
-
-        val computer = Computer(registerA, registerB, registerC, program)
-
-        return computer.runToEnd().joinToString(",")
-    }
+    override fun partOne() =
+        Computer(registerA, registerB, registerC, program).runToEnd().joinToString(",")
 
 
     override fun partTwo(): Long {
 
         val computer = Computer(0, 0, 0, listOf(2, 4, 1, 1, 7, 5, 4, 7, 1, 4, 0, 3, 5, 5, 3, 0))
-
 
         return computer.program
             .reversed()
@@ -199,13 +102,14 @@ class Day17(input: String? = null) : Day(17, "Day17", input) {
                 candidates.flatMap { candidate ->
                     val shifted = candidate shl 3
                     (shifted..shifted + 8).mapNotNull { attempt ->
-                        computer.copy().run {
-                            registerA = attempt
+                        computer.copy(registerA = attempt).run {
                             attempt.takeIf { runToEnd().first() == instruction }
                         }
                     }
                 }
-            }.first { computer.copy(registerA = it).runToEnd().map { it.toInt() } == computer.program }
+            }.first { candidate ->
+                computer.copy(registerA = candidate).runToEnd().map { it.toInt() } == computer.program
+            }
 
     }
 
