@@ -46,5 +46,6 @@ class Day25(input: String? = null) : Day(25, "Day25", input) {
         return locks to keys
     }
 
+    // Nothing to do
     override fun partTwo() = NOT_IMPLEMENTED
 }
