@@ -1,23 +1,38 @@
 package de.pgebert.aoc.days
 
 import de.pgebert.aoc.Day
+import java.util.*
 import kotlin.math.abs
 
 class Day16(input: String? = null) : Day(16, "Day16", input) {
-
+    
     override fun partOne(): Int {
 
+        val (start, end, walls) = findPositions(inputList)
+        val dir = Pair(0, 1)
 
-        val maze = inputList.toList()
+        val paths = findMinCostPaths(start, dir, end, walls)
+        return paths.first().second
+    }
 
+
+    override fun partTwo(): Int {
+
+        val (start, end, walls) = findPositions(inputList)
+        val dir = Pair(0, 1)
+
+        val paths = findMinCostPaths(start, dir, end, walls)
+        return paths.flatMap { it.first }.toSet().size
+    }
+
+    private fun findPositions(maze: List<String>): Triple<Pair<Int, Int>, Pair<Int, Int>, Set<Pair<Int, Int>>> {
         var start = Pair(0, 0)
         var end = Pair(0, 0)
-        val dir = Pair(0, 1)
         val walls = mutableSetOf<Pair<Int, Int>>()
 
-        for (i in maze.indices) {
-            for (j in maze[i].indices) {
-                when (maze[i][j]) {
+        maze.forEachIndexed { i, row ->
+            row.forEachIndexed { j, cell ->
+                when (cell) {
                     'S' -> start = Pair(i, j)
                     'E' -> end = Pair(i, j)
                     '#' -> walls.add(Pair(i, j))
@@ -25,66 +40,78 @@ class Day16(input: String? = null) : Day(16, "Day16", input) {
             }
         }
 
-        val totalCost = move(start, dir, mutableMapOf(), 0, maze)
-
-        return totalCost
+        return Triple(start, end, walls)
     }
 
-    private fun move(
-        pos: Pair<Int, Int>,
-        dir: Pair<Int, Int>,
-        globalCostMap: MutableMap<Int, Int>,
-        cost: Int,
-        maze: List<String>
-    ): Int {
+    private fun findMinCostPaths(
+        start: Pair<Int, Int>,
+        direction: Pair<Int, Int>,
+        end: Pair<Int, Int>,
+        blocked: Set<Pair<Int, Int>>,
+    ): List<Pair<List<Pair<Int, Int>>, Int>> {
 
-        if (maze[pos.first][pos.second] == 'E') return cost
+        val costCache = mutableMapOf<Pair<Pair<Int, Int>, Pair<Int, Int>>, Int>()
+
+        // Stack for DFS: (current position, current direction, current cost)
+        val stack: Stack<Triple<List<Pair<Int, Int>>, Pair<Int, Int>, Int>> = Stack()
+
+        stack.push(Triple(listOf(start), direction, 0))
 
         var minCost = Int.MAX_VALUE
+        val minCostPaths = mutableListOf<List<Pair<Int, Int>>>()
+
+        while (stack.isNotEmpty()) {
+            val (path, currentDir, currentCost) = stack.pop()
+            val currentPos = path.last()
+
+            if (currentPos == end) {
+                if (currentCost < minCost) {
+                    minCost = currentCost
+                    minCostPaths.removeAll { true }
+                }
+                if (currentCost == minCost) {
+                    minCostPaths.add(path)
+                }
+            }
+
+            if (currentCost >= minCost) {
+                continue
+            }
+
+            val cachedCost = costCache.getOrDefault(currentPos to currentDir, Int.MAX_VALUE)
+            if (currentCost > cachedCost) {
+                continue
+            }
+
+            costCache[currentPos to currentDir] = currentCost
+
+            val neighbors = getNeighbors(currentPos, currentDir)
+            neighbors.forEach { (neighborPos, neighborDir, neighborCost) ->
+                if (neighborPos !in blocked) {
+                    stack.push(Triple(path + neighborPos, neighborDir, currentCost + neighborCost))
+                }
+            }
+        }
+
+        return minCostPaths.map { it to minCost }
+    }
+
+
+    private fun getNeighbors(pos: Pair<Int, Int>, dir: Pair<Int, Int>) = buildList {
 
         val dirIndex = directions.indexOf(dir)
         for (i in -1..1) {
 
             val newDir = directions[(dirIndex + i + directions.size) % directions.size]
             val newPos = pos + newDir
-            val newCost = cost + 1000 * abs(i) + 1
+            val cost = 1000 * abs(i) + 1
 
-            if (cost > 111484) continue
-
-            // + abs(((dirIndex + i + directions.size) % directions.size) - 1) * 1000
-            if (maze[pos.first][pos.second] == '#') continue
-            if (globalCostMap.getOrDefault(hash(newPos, newDir), Int.MAX_VALUE) <= newCost) continue
-//            if (history.getOrDefault(
-//                    newPos,
-//                    Int.MAX_VALUE
-//                ) < newCost + abs(((dirIndex + i + directions.size) % directions.size) - 1) * 1000
-//            ) continue
-
-            globalCostMap[hash(newPos, newDir)] = newCost
-
-
-            val costToEnd = move(newPos, newDir, globalCostMap, newCost, maze)
-
-            if (costToEnd < minCost) {
-                minCost = costToEnd
-            }
+            add(Triple(newPos, newDir, cost))
         }
-
-        return minCost
     }
 
-    private fun hash(pos: Pair<Int, Int>, dir: Pair<Int, Int>): Int {
-
-        val height = inputList.size
-        val width = inputList.first().length
-
-        val i = directions.indexOf(dir)
-
-        return (pos.first * width + pos.second) * 4 + i
-
-    }
-
-    private operator fun Pair<Int, Int>.plus(other: Pair<Int, Int>) = Pair(first + other.first, second + other.second)
+    private operator fun Pair<Int, Int>.plus(other: Pair<Int, Int>) =
+        Pair(first + other.first, second + other.second)
 
     private val directions = listOf(
         -1 to 0,  // up
@@ -93,72 +120,4 @@ class Day16(input: String? = null) : Day(16, "Day16", input) {
         0 to -1   // left
     )
 
-    override fun partTwo(): Int {
-
-
-        val maze = inputList.toList()
-
-        var start = Pair(0, 0)
-        var end = Pair(0, 0)
-        val dir = Pair(0, 1)
-        val walls = mutableSetOf<Pair<Int, Int>>()
-
-        for (i in maze.indices) {
-            for (j in maze[i].indices) {
-                when (maze[i][j]) {
-                    'S' -> start = Pair(i, j)
-                    'E' -> end = Pair(i, j)
-                    '#' -> walls.add(Pair(i, j))
-                }
-            }
-        }
-
-        val paths = getPaths(start, dir, mutableMapOf(), 0, setOf(start), maze)
-
-        return paths.size
-    }
-
-
-    private fun getPaths(
-        pos: Pair<Int, Int>,
-        dir: Pair<Int, Int>,
-        globalCostMap: MutableMap<Int, Int>,
-        cost: Int,
-        path: Set<Pair<Int, Int>>,
-        maze: List<String>
-    ): Set<Pair<Int, Int>> {
-
-        if (maze[pos.first][pos.second] == 'E') {
-            if (cost == 111480) return path + pos
-            else emptySet<Pair<Int, Int>>()
-        }
-
-        var paths = mutableSetOf<Pair<Int, Int>>()
-
-        val dirIndex = directions.indexOf(dir)
-        for (i in -1..1) {
-
-            val newDir = directions[(dirIndex + i + directions.size) % directions.size]
-            val newPos = pos + newDir
-            val newCost = cost + 1000 * abs(i) + 1
-
-            if (cost > 111484) continue
-
-            // + abs(((dirIndex + i + directions.size) % directions.size) - 1) * 1000
-            if (maze[pos.first][pos.second] == '#') continue
-            if (globalCostMap.getOrDefault(hash(newPos, newDir), Int.MAX_VALUE) < newCost) continue
-//            if (history.getOrDefault(
-//                    newPos,
-//                    Int.MAX_VALUE
-//                ) < newCost + abs(((dirIndex + i + directions.size) % directions.size) - 1) * 1000
-//            ) continue
-
-            globalCostMap[hash(newPos, newDir)] = newCost
-
-
-            paths.addAll(getPaths(newPos, newDir, globalCostMap, newCost, path + newPos, maze))
-        }
-
-        return paths
-    }
 }
